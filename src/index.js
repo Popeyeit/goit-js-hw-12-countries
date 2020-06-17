@@ -3,13 +3,17 @@ import fetchCountries from './js/fetchCountries';
 import debounce from 'lodash.debounce';
 import '@pnotify/core/dist/BrightTheme.css';
 import checkValid from './js/checkValidInput'
-
+import {
+  options,
+} from './js/options';
+import {
+  error,
+} from '@pnotify/core';
 
 const refs = {
   input: document.querySelector('.input-js'),
   container: document.querySelector('.container-js'),
 };
-console.log(refs.input);
 
 refs.input.addEventListener('input', debounce(handleInputName, 500));
 
@@ -19,10 +23,16 @@ function handleInputName(e) {
   fetchCountries(nameCountry)
     .then(data => {
       const string = checkValid(data);
-      console.log(string);
       if (string) {
         refs.container.innerHTML = string;
       }
+      throw new Error('no Valid')
     })
-    .catch(console.log);
+    .catch(err => {
+      error({
+        ...options,
+        text: 'Не валидный запрос.',
+        title: 'УПС!'
+      })
+    });
 }
