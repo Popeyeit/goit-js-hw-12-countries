@@ -1,0 +1,1 @@
+html{box-sizing:border-box}*,:after,:before{box-sizing:inherit}.country-wrapper{display:flex}.country-item:not(:last-child){margin-right:40px}h2{text-align:center;width:400px}p{font-weight:600}span{font-weight:400}.position{position:absolute;left:60%;background-color:red}.input-js{width:400px;padding:10px;border:1px solid grey;border-radius:4px}
