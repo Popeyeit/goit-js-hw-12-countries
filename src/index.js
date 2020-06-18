@@ -3,12 +3,6 @@ import fetchCountries from './js/fetchCountries';
 import debounce from 'lodash.debounce';
 import '@pnotify/core/dist/BrightTheme.css';
 import checkValid from './js/checkValidInput'
-import {
-  options,
-} from './js/options';
-import {
-  error,
-} from '@pnotify/core';
 
 const refs = {
   input: document.querySelector('.input-js'),
@@ -26,13 +20,9 @@ function handleInputName(e) {
       if (string) {
         refs.container.innerHTML = string;
       }
-      throw new Error('no Valid')
+      throw ('Не валидный запрос')
     })
     .catch(err => {
-      error({
-        ...options,
-        text: 'Не валидный запрос.',
-        title: 'УПС!'
-      })
+      console.log(err);
     });
 }
